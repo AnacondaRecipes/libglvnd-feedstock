@@ -4,11 +4,13 @@ set -e -x
 # Get meson to find pkg-config when cross compiling
 export PKG_CONFIG="${BUILD_PREFIX}/bin/pkg-config"
 
-# Set PREFIX explicitly for installation
-export PREFIX_PATH="${PREFIX}"
-
 meson setup builddir \
     ${MESON_ARGS} \
+    --buildtype=release \
+    --prefix="$PREFIX" \
+    --libdir="${PREFIX}/lib" \
+    --includedir=${PREFIX}/include \
+    --backend=ninja \
     -Dasm=enabled \
     -Dx11=enabled \
     -Degl=true \
@@ -17,8 +19,7 @@ meson setup builddir \
     -Dgles2=true \
     -Dtls=true \
     -Ddispatch-tls=true \
-    -Dheaders=true \
-    --prefix=${PREFIX_PATH}
+    -Dheaders=true
 
 ninja -v -C builddir
 ninja -C builddir install
