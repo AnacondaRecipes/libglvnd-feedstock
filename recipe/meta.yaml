@@ -31,6 +31,7 @@ outputs:
       - "lib/libGLdispatch.so.*"
     requirements:
       build:
+        - {{ compiler('c') }}
     test:
       commands:
         # Shared libraries (change in any SOVER means we need to react on run-export)
@@ -45,6 +46,8 @@ outputs:
       run_exports:
         - {{ pin_subpackage('libglvnd', max_pin='x') }}
     requirements:
+      build:
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
       run:
@@ -62,6 +65,8 @@ outputs:
     files:
       - "lib/libOpenGL.so.*"
     requirements:
+      build:
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
       run:
@@ -79,6 +84,8 @@ outputs:
       run_exports:
         - {{ pin_subpackage('libopengl', max_pin='x') }}
     requirements:
+      build:
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libopengl', exact=True) }}
       run:
@@ -93,6 +100,8 @@ outputs:
     files:
       - "lib/libGLX.so.*"
     requirements:
+      build:
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
         - xorg-libx11
@@ -116,6 +125,8 @@ outputs:
         # Only need the headers during development build
         - xorg-libxext
     requirements:
+      build:
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglx', exact=True) }}
         - xorg-libx11
@@ -136,6 +147,8 @@ outputs:
     files:
       - "lib/libGL.so.*"
     requirements:
+      build:
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
         - {{ pin_subpackage('libglx', exact=True) }}
@@ -159,6 +172,8 @@ outputs:
       run_exports:
         - {{ pin_subpackage('libgl', max_pin='x') }}
     requirements:
+      build:
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libgl', exact=True) }}
         - {{ pin_subpackage('libglx-devel', exact=True) }}
@@ -179,6 +194,8 @@ outputs:
     files:
       - "lib/libEGL.so.*"
     requirements:
+      build:
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
       run:
@@ -201,6 +218,8 @@ outputs:
         - libgl-devel
         - xorg-libx11
     requirements:
+      build:
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libegl', exact=True) }}
         - {{ pin_subpackage('libgl-devel', exact=True) }}
@@ -223,6 +242,8 @@ outputs:
       - "lib/libGLESv1_CM.so.*"
       - "lib/libGLESv2.so.*"
     requirements:
+      build:
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
       run:
@@ -250,6 +271,8 @@ outputs:
         - libegl-devel
         - libgl-devel
     requirements:
+      build:
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libgles', exact=True) }}
         - {{ pin_subpackage('libegl-devel', exact=True) }}
