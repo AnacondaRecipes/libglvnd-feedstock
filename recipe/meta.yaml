@@ -17,6 +17,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - patch  # [unix]
     - meson
     - pkg-config
     - ninja
@@ -305,6 +306,7 @@ about:
   dev_url: https://gitlab.freedesktop.org/glvnd/libglvnd
   doc_url: https://gitlab.freedesktop.org/glvnd/libglvnd
   license: LicenseRef-libglvnd
+  license_family: Other
   license_file: README.md
   summary: GL Vendor-Neutral Dispatch library
   description: |
