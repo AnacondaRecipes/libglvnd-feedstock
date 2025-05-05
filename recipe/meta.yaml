@@ -17,7 +17,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - {{ stdlib('c') }}
+    - patch  # [unix]
     - meson
     - pkg-config
     - ninja
@@ -32,7 +32,7 @@ outputs:
       - "lib/libGLdispatch.so.*"
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
     test:
       commands:
         # Shared libraries (change in any SOVER means we need to react on run-export)
@@ -48,7 +48,7 @@ outputs:
         - {{ pin_subpackage('libglvnd', max_pin='x') }}
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
       run:
@@ -67,7 +67,7 @@ outputs:
       - "lib/libOpenGL.so.*"
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
       run:
@@ -86,7 +86,7 @@ outputs:
         - {{ pin_subpackage('libopengl', max_pin='x') }}
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libopengl', exact=True) }}
       run:
@@ -102,7 +102,7 @@ outputs:
       - "lib/libGLX.so.*"
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
         - xorg-libx11
@@ -127,7 +127,7 @@ outputs:
         - xorg-libxext
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglx', exact=True) }}
         - xorg-libx11
@@ -149,7 +149,7 @@ outputs:
       - "lib/libGL.so.*"
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
         - {{ pin_subpackage('libglx', exact=True) }}
@@ -174,7 +174,7 @@ outputs:
         - {{ pin_subpackage('libgl', max_pin='x') }}
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libgl', exact=True) }}
         - {{ pin_subpackage('libglx-devel', exact=True) }}
@@ -196,7 +196,7 @@ outputs:
       - "lib/libEGL.so.*"
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
       run:
@@ -220,7 +220,7 @@ outputs:
         - xorg-libx11
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libegl', exact=True) }}
         - {{ pin_subpackage('libgl-devel', exact=True) }}
@@ -244,7 +244,7 @@ outputs:
       - "lib/libGLESv2.so.*"
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
       run:
@@ -273,7 +273,7 @@ outputs:
         - libgl-devel
     requirements:
       build:
-        - {{ stdlib('c') }}
+        - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libgles', exact=True) }}
         - {{ pin_subpackage('libegl-devel', exact=True) }}
@@ -303,9 +303,18 @@ outputs:
 
 about:
   home: https://gitlab.freedesktop.org/glvnd/libglvnd
+  dev_url: https://gitlab.freedesktop.org/glvnd/libglvnd
+  doc_url: https://gitlab.freedesktop.org/glvnd/libglvnd
   license: LicenseRef-libglvnd
+  license_family: Other
   license_file: README.md
   summary: GL Vendor-Neutral Dispatch library
+  description: |
+    libglvnd is a vendor-neutral dispatch layer for arbitrating OpenGL API calls
+    between multiple vendors. It allows multiple drivers from different vendors to
+    coexist on the same filesystem, and determines which vendor to dispatch each
+    API call to at runtime.
+    Both GLX and EGL are supported, in any combination with OpenGL and OpenGL ES.
 
 extra:
   feedstock-name: libglvnd
