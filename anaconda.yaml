@@ -5,3 +5,15 @@ upstream_sources:
       host: gitlab.freedesktop.org
       use_max_tag: true
       include_regex: ^v\d+(?:\.\d+)+$
+    packages:
+      - libglvnd
+      - libglvnd-devel
+      - libopengl
+      - libglx
+      - libglx-devel
+      - libgl
+      - libgl-devel
+      - libegl
+      - libegl-devel
+      - libgles
+      - libgles-devel
