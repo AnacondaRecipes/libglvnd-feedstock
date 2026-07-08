@@ -4,11 +4,14 @@ upstream_sources:
       identifier: glvnd/libglvnd
       host: gitlab.freedesktop.org
       use_max_tag: true
-      include_regex: ^v\d+(?:\.\d+)+$
+      include_regex: ^v[\d.]+$
+      from_pattern: ^v(.+)$
+      to_pattern: \1
     packages:
       - libglvnd
       - libglvnd-devel
       - libopengl
+      - libopengl-devel
       - libglx
       - libglx-devel
       - libgl
