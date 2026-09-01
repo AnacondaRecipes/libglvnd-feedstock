@@ -322,7 +322,7 @@ about:
   license: LicenseRef-libglvnd
   license_family: Other
   license_file: README.md
-  summary: GL Vendor-Neutral Dispatch library
+  summary: GL Vendor-Neutral Dispatch library.
   description: |
     libglvnd is a vendor-neutral dispatch layer for arbitrating OpenGL API calls
     between multiple vendors. It allows multiple drivers from different vendors to
