@@ -6,9 +6,6 @@ export PKG_CONFIG="${BUILD_PREFIX}/bin/pkg-config"
 
 meson setup builddir \
     ${MESON_ARGS} \
-    --buildtype=release \
-    --prefix="$PREFIX" \
-    --libdir="${PREFIX}/lib" \
     --includedir=${PREFIX}/include \
     --backend=ninja \
     -Dasm=enabled \
