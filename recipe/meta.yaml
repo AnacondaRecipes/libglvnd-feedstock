@@ -112,7 +112,7 @@ outputs:
         - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglvnd', exact=True) }}
-        - xorg-libx11
+        - xorg-libx11 {{ xorg_libx11 }}
       run:
         - {{ pin_subpackage('libglvnd', exact=True) }}
     test:
@@ -131,16 +131,16 @@ outputs:
         - {{ pin_subpackage('libglx', max_pin='x') }}
       ignore_run_exports_from:
         # Only need the headers during development build
-        - xorg-libxext
+        - xorg-libxext {{ xorg_libxext }}
     requirements:
       build:
         - {{ stdlib('c') }}
         - {{ compiler('c') }}
       host:
         - {{ pin_subpackage('libglx', exact=True) }}
-        - xorg-libx11
-        - xorg-libxext
-        - xorg-xorgproto
+        - xorg-libx11 {{ xorg_libx11 }}
+        - xorg-libxext {{ xorg_libxext }}
+        - xorg-xorgproto {{ xorg_xorgproto }}
       run:
         - {{ pin_subpackage('libglx', exact=True) }}
         - xorg-xorgproto
@@ -236,7 +236,7 @@ outputs:
       host:
         - {{ pin_subpackage('libegl', exact=True) }}
         - {{ pin_subpackage('libgl-devel', exact=True) }}
-        - xorg-libx11
+        - xorg-libx11 {{ xorg_libx11 }}
       run:
         - {{ pin_subpackage('libegl', exact=True) }}
         - {{ pin_subpackage('libgl-devel', exact=True) }}
